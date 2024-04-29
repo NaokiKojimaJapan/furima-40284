@@ -13,30 +13,45 @@
 
 ### Association
 
-- has_many :merhcandises
+- has_many :items
+- has_many :histories
 
-## merchandises テーブル
+## items テーブル
 
-| Column             | Type    | Options     |
-| ------------------ | ------- | ----------- |
-| image              | string  | null: false |
-| name               | string  | null: false |
-| content            | text    | null: false |
-| category           | string  | null: false |
-| status             | string  | null: false |
-| ship_fee           | integer | null: false |
-| location           | string  | null: false |
-| prepare_period     | integer | null: false, unique: true |
-| price              | integer | null: false |
-| sales_fee          | integer |
-| sales_revenue      | integer |
+| Column             | Type       | Options     |
+| ------------------ | ---------- | ----------- |
+| image              | string     | null: false |
+| name               | string     | null: false |
+| content            | text       | null: false |
+| category           | string     | null: false |
+| status             | string     | null: false |
+| ship_fee           | integer    | null: false |
+| location           | string     | null: false |
+| prepare_period     | integer    | null: false, unique: true |
+| price              | integer    | null: false |
+| sales_fee          | integer    |
+| sales_revenue      | integer    |
+| user_id            | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- belongs_to :customer
+- has_one    :history
 
-## customers テーブル
+## histories テーブル
+
+| Column             | Type     | Options     |
+| ------------------ | -------- | ----------- |
+| item_id            | references | null: false, foreign_key: true |
+| user_id            | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :item
+- belongs_to :user
+- has_one    :address
+
+## addresses テーブル
 
 | Column             | Type    | Options     |
 | ------------------ | ------- | ----------- |
@@ -46,20 +61,8 @@
 | street             | string  | null: false |
 | building           | string  | null: true  |
 | phone_number       | integer | null: false |
+| history_id         | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_many :merchandises
-- has_many :credit_cards
-
-## credit_cards テーブル
-
-| Column             | Type     | Options     |
-| ------------------ | -------- | ----------- |
-| card_number        | integer  | null: false |
-| expire_date        | datetime | null: false |
-| security_code      | integer  | null: false |
-
-### Association
-
-- belongs_to :customer
+- belongs_to :history
