@@ -7,9 +7,11 @@
 | nickname           | string   | null: false |
 | email              | string   | null: false, unique: true |
 | encrypted_password | string   | null: false |
-| full_name          | string   | null: false |
-| full_name_kana     | string   | null: false |
-| birth_date         | datetime | null: false |
+| first_name         | string   | null: false |
+| last_name          | string   | null: false |
+| kana_first_name    | string   | null: false |
+| kana_last_name     | string   | null: false |
+| birth_date         | date     | null: false |
 
 ### Association
 
@@ -20,18 +22,15 @@
 
 | Column             | Type       | Options     |
 | ------------------ | ---------- | ----------- |
-| image              | string     | null: false |
 | name               | string     | null: false |
 | content            | text       | null: false |
-| category           | string     | null: false |
-| status             | string     | null: false |
-| ship_fee           | integer    | null: false |
-| location           | string     | null: false |
-| prepare_period     | integer    | null: false, unique: true |
+| category_id	       | integer	  | null: false |
+| status_id	         | integer	  | null: false |
+| shipping_fee_id	   | integer	  | null: false |
+| origin_area_id	   | integer	  | null: false |
+| shipping_time_id	 | integer	  | null: false |
 | price              | integer    | null: false |
-| sales_fee          | integer    |
-| sales_revenue      | integer    |
-| user_id            | references | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -42,8 +41,8 @@
 
 | Column             | Type     | Options     |
 | ------------------ | -------- | ----------- |
-| item_id            | references | null: false, foreign_key: true |
-| user_id            | references | null: false, foreign_key: true |
+| item               | references | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -55,13 +54,13 @@
 
 | Column             | Type    | Options     |
 | ------------------ | ------- | ----------- |
-| postal_code        | integer | null: false |
+| postal_code        | string  | null: false |
 | prefecture         | string  | null: false |
 | city               | string  | null: false |
 | street             | string  | null: false |
-| building           | string  | null: true  |
+| building           | string  |             |
 | phone_number       | integer | null: false |
-| history_id         | references | null: false, foreign_key: true |
+| history            | references | null: false, foreign_key: true |
 
 ### Association
 
