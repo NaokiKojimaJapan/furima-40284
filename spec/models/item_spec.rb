@@ -67,9 +67,8 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
       end
       it 'userが紐付いていなければ出品できない' do
-        @item.user_id = nil
+        @item.user = nil
         @item.valid?
-        binding.pry
         expect(@item.errors.full_messages).to include('User must exist')
       end
       it 'imageが空では出品できない' do
