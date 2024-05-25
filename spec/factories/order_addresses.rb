@@ -4,6 +4,7 @@ FactoryBot.define do
     prefecture_id { '2' }
     city          { '横浜市青葉区' }
     street        { '美しが丘0丁目0-0-000' }
+    building      { 'ライオンズマンション' }
     phone_number  { '1234567890' }
     token         { 'tok_abcdefghijk00000000000000000' }
   end
