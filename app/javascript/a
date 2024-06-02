@@ -1,0 +1,10 @@
+INSTANCE_ID=$(
+  aws ec2 run-instances \
+    --image-id $AMI_ID \
+    --count 1 \
+    --instance-type t2.micro \
+    --key-name my-key-pair \
+    --region ap-northeast-1 \
+    --query "Instances[0].InstanceId" \
+    --output text
+)
